@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <nav>
-      <Container p={{ y: "1rem" }}>
+      <Container p="1rem">
         <Row justify="space-between" align="center">
           <Div>
             <Link 

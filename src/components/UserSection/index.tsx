@@ -1,4 +1,5 @@
 import { Container, Col, Row, Text, Button } from "atomize";
+import { Link } from "react-router-dom";
 
 import { useUser } from "../../context/user";
 
@@ -22,20 +23,23 @@ export const UserSection = ({  }: UserSectionProps) => {
             Hi {user?.username}
           </Text>
 
-          <Button
-            bg="warning300"
-            hoverBg="warning400"
-            rounded="lg"
-            textColor="warning700"
-            h="3rem"
-            p={{ x: "3rem" }}
-            m={{ x: "auto" }}
-          >Play!</Button>
+          <Link to="/quiz">
+            <Button
+              bg="warning300"
+              hoverBg="warning400"
+              rounded="lg"
+              textColor="warning700"
+              h="3rem"
+              p={{ x: "3rem" }}
+              m={{ x: "auto" }}
+            >Play!</Button>
+          </Link>
         </Col>
       </Row>
       
       <Row>
-
+        TODO:
+        list of games
       </Row>
     </Container>
 	)
