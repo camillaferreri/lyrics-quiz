@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Container, Row, Text, Icon, Div, Button } from "atomize"
 import { Link } from "react-router-dom"
 
@@ -46,8 +46,8 @@ export const Quiz = ({  }: QuizProps) => {
 					<QuizCountdown countdown={countdown} />
 				</Container>
 			}
-			<Container h="65vh" d="flex" flexDir="column" justify="center">
 
+			<Container h="65vh" d="flex" flexDir="column" justify="center">
 				{levels.length === 0 &&
 					<Div textAlign="center">
 						<Icon name="Loading" size="20px" />
@@ -65,8 +65,9 @@ export const Quiz = ({  }: QuizProps) => {
 						>“{levels[currentLevel].snippet}”</Text>
 
 						<Row justify="center" align="center">
-							{levels[currentLevel].artists.map(artist => (
+							{levels[currentLevel].artists.map((artist, index) => (
 								<Artist 
+									key={index}
 									name={artist.name}
 									onClick={() => onArtistSelected(artist.id)}
 									success={artist.id === selectedCorrectArtist}

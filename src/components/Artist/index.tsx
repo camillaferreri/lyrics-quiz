@@ -25,7 +25,6 @@ export const Artist = ({ name, onClick, success, error }: ArtistProps) => {
           textColor={success ? "success900" : (error ? "danger900" : "info900")}
           textWeight="700"
           textAlign="center"
-          
         >{name}</Text>
       </Div>
     </Col>
