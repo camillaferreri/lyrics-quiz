@@ -18,7 +18,7 @@ export const LoginForm = ({  }: LoginFormProps) => {
   }
 
 	return (
-		<Container>
+		<Container h="80vh" d="flex" flexDir="column" justify="center">
       <Row justify="center">
         <Col size={{ xs: "12", md: "5" }}>
           <Text 
