@@ -7,19 +7,14 @@ import { useEndGameScores } from "../../hooks/useEndGameScores"
 
 import { Artist } from "../../components/Artist"
 import { QuizLevel } from "../../components/QuizLevel"
-import { QuizCountdown } from "../../components/QuizCountdown"
-import { useLevelCountdown } from "../../hooks/useLevelCountdown"
 
-interface QuizProps {}
-
-export const Quiz = ({  }: QuizProps) => {
+export const Quiz = () => {
 	const [ currentLevel, setCurrentLevel ] = useState<number>(0)
 	const [ points, setPoints ] = useState<number>(0)
 	const [ selectedCorrectArtist, setSelectedCorrectArtist ] = useState<number | undefined>(undefined)
 	const [ selectedWrongArtist, setSelectedWrongArtist ] = useState<number | undefined>(undefined)
 
 	const [ levels ] = useSetupGameLevels()
-	const [ countdown ] = useLevelCountdown({ currentLevel })
 	useEndGameScores({ currentLevel, points })
 
 	const onArtistSelected = (id: number) => {
@@ -40,11 +35,7 @@ export const Quiz = ({  }: QuizProps) => {
 	return (
 		<main className="Quiz">
 			{(levels.length && currentLevel < 10) &&
-				<Container d="flex" flexDir="row" justify="space-around">
-					<QuizLevel currentLevel={currentLevel} />
-
-					<QuizCountdown countdown={countdown} />
-				</Container>
+				<QuizLevel currentLevel={currentLevel} />
 			}
 
 			<Container h="65vh" d="flex" flexDir="column" justify="center">
@@ -54,7 +45,7 @@ export const Quiz = ({  }: QuizProps) => {
 					</Div>
 				}
 
-				{(levels.length && currentLevel < 10) &&
+				{(levels.length > 0 && currentLevel < 10 && levels[currentLevel]) &&
 					<>
 						<Text
 							textSize="display1"
@@ -62,10 +53,10 @@ export const Quiz = ({  }: QuizProps) => {
 							textWeight="700"
 							textAlign="center"
 							m={{ b: "3rem" }}
-						>“{levels[currentLevel].snippet}”</Text>
+						>“{levels[currentLevel]?.snippet}”</Text>
 
 						<Row justify="center" align="center">
-							{levels[currentLevel].artists.map((artist, index) => (
+							{levels[currentLevel]?.artists.map((artist, index) => (
 								<Artist 
 									key={index}
 									name={artist.name}
@@ -84,7 +75,7 @@ export const Quiz = ({  }: QuizProps) => {
 							textSize="display1" 
 							textAlign="center"
 							m={{ b: "1rem" }}
-						>Game over!</Text>
+						>Congrats! You made {points} points!</Text>
 
 						<Link to="/">
 							<Button

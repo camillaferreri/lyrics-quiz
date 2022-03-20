@@ -3,9 +3,7 @@ import { useUser } from "../../context/user";
 import LoginForm from "../../components/LoginForm";
 import UserSection from "../../components/UserSection";
 
-interface HomeProps {}
-
-export const Home = ({  }: HomeProps) => {
+export const Home = () => {
 	const { user } = useUser()
 
 	return (

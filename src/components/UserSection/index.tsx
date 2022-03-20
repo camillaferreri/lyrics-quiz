@@ -5,16 +5,13 @@ import { useUser } from "../../context/user";
 import { useScores } from "../../hooks/useScores";
 import { Score } from "../Score";
 
-interface UserSectionProps {
-}
-
-export const UserSection = ({  }: UserSectionProps) => {
+export const UserSection = () => {
   const { user } = useUser()
   const [ scores ] = useScores(user)
 
 	return (
     <Container>
-      <Row justify="center" m={{ b: "3rem" }}>
+      <Row justify="center" m={{ t: "4rem", b: "6rem" }}>
         <Col size={{ xs: "12", md: "5" }}>
           <Text 
             tag="h1" 
@@ -23,7 +20,7 @@ export const UserSection = ({  }: UserSectionProps) => {
             textAlign="center"
             m={{ b: "1rem" }}
           >
-            Hi {user?.username}
+            Hi {user?.username}!
           </Text>
 
           <Link to="/quiz">
@@ -35,7 +32,7 @@ export const UserSection = ({  }: UserSectionProps) => {
               h="3rem"
               p={{ x: "3rem" }}
               m={{ x: "auto" }}
-            >Play!</Button>
+            >Let's play!</Button>
           </Link>
         </Col>
       </Row>
@@ -45,7 +42,7 @@ export const UserSection = ({  }: UserSectionProps) => {
           <Text 
             tag="h2"
             textSize="title" 
-            textColor="info900"
+            textColor="black900"
             textAlign="center"
             m={{ b: "1rem" }}
           >Your games</Text>
@@ -60,10 +57,12 @@ export const UserSection = ({  }: UserSectionProps) => {
         ))}
 
         {scores.length === 0 &&
-          <Text 
-            textSize="subheader"
-            textAlign="center"
-          >Nobody played yet, be the first!</Text>
+          <Col size="8">
+            <Text 
+              textSize="subheader"
+              textAlign="center"
+            >You haven't played yet!</Text>
+          </Col>
         }
       </Row>
     </Container>

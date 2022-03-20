@@ -12,9 +12,8 @@ import reportWebVitals from './reportWebVitals';
 const debug = process.env.NODE_ENV === "production" ? void 0 : new DebugEngine();
 const engine = new Styletron();
 
-
-axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/';
-axios.defaults.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:3000'
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ? 'https://api.musixmatch.com/ws/1.1/' : 'http://localhost:8010/proxy/';
+axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
 
 ReactDOM.render(

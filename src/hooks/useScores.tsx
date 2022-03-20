@@ -18,7 +18,6 @@ export const useScores = (user?: User) => {
       .sort((a, b) => b.points - a.points)
 
 		setScores(scoresList)
-		console.log(scoresList)
 	}, [])
 
   return [ scores ]

@@ -4,12 +4,12 @@ import { Score as ScoreProps } from "../../models/score";
 
 export const Score = ({ user, points }: ScoreProps) => {
   return (
-    <Col size="8">
+    <Col size={{ sx: "12", md: "8"}}>
       <Div
         rounded="lg"
         border="4px solid"
-        borderColor="info400"
-        p={{ y: "2rem", x: "4rem" }}
+        borderColor="black400"
+        p={{ y: "2rem", x: { xs: "2rem", md: "4rem" } }}
         m={{ y: "0.5rem" }}
         cursor="pointer"
         d="flex"
@@ -17,13 +17,13 @@ export const Score = ({ user, points }: ScoreProps) => {
       >
         <Text 
           textSize="title"
-          textColor="info900"
+          textColor="black900"
           textAlign="center"
           
         >{user}</Text>
         <Text 
           textSize="title"
-          textColor="info900"
+          textColor="black900"
           textWeight="700"
           textAlign="center"
           

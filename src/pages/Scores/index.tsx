@@ -4,9 +4,7 @@ import { useScores } from "../../hooks/useScores";
 
 import { Score } from "../../components/Score";
 
-interface ScoresProps {}
-
-export const Scores = ({  }: ScoresProps) => {
+export const Scores = () => {
 	const [ scores ] = useScores()
 
 	return (
@@ -15,7 +13,7 @@ export const Scores = ({  }: ScoresProps) => {
 				<Text 
 					tag="h1" 
 					textSize="title" 
-					textColor="info900"
+					textColor="black900"
 					textAlign="center"
 					m={{ b: "1rem" }}
 				>Top Players</Text>
